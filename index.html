@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <button>rec</button>
-  <button>stop</button>
-  <!-- 録音した声の表示エリア -->
-  <div id="rec_text"></div>
-  <script src="./script.js"></script>
-</body>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="rec-bt-container">
+      <button id="rec_bt" class="rec-bt"><span>●</span><span>REC</span></button>
+    </div>
+    <!-- 録音した声の表示エリア -->
+    <div class="rec-text" id="rec_text"></div>
+    <script src="./script.js"></script>
+  </body>
+
 </html>

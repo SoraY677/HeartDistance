@@ -1,0 +1,76 @@
+/* =======
+ * 録音ボタン
+ */
+.rec-bt-container{
+  width: 100%;
+  height:20vh;
+  text-align: center;
+}
+
+button.rec-bt {
+  min-width: 80px;
+  min-height: 80px;
+  color: #2e2e2e;
+  border-radius: 50%;
+}
+
+button.rec-bt.active {
+  color: #ff2222;
+}
+
+button.rec-bt span {
+  display: block;
+}
+
+button.rec-bt span:nth-child(1) {
+  font-size: 48px;
+}
+
+button.rec-bt.active span:nth-child(1) {
+  animation: rec-anim 1s ease 0s infinite normal;
+}
+
+button.rec-bt span:nth-child(2) {
+  font-size: 12px
+}
+
+@keyframes rec-anim {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =======
+ * 録音したテキスト
+ */
+.rec-text{
+  width:80%;
+  height:70vh;
+  margin: 0 auto;
+  background-color:#dddddd;
+  overflow: auto;
+}
+
+.talk-section{
+  position: relative;
+  width:fit-content;
+  padding:10px;
+  text-align: center;
+  border: 2px solid #2e2e2e;
+  border-radius: 10px;
+  background-color:white;
+}
+
+.talk-section:nth-child(2n){
+  clear: both;
+  float: right;
+  
+}
+
+.talk-section:nth-child(2n+1){
+  clear: both;
+  float:left;
+}
