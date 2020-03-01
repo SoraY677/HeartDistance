@@ -1,3 +1,5 @@
+![](https://img.shields.io/github/repo-size/SoraY677/HeartDistance) ![](https://img.shields.io/github/package-json/v/SoraY677/HeartDistance) ![](https://img.shields.io/github/last-commit/SoraY677/HeartDistance)
+![](https://img.shields.io/github/watchers/SoraY677/HeartDistance?style=social) ![](https://img.shields.io/github/stars/SoraY677/HeartDistance?style=social)
 # 概要
 人の会話を録音し、会話内容から「KOTOHA API」を用いた感情分析によって会話の盛り上がりを算出。  
 最終的に人と人との心の距離を定量的に測る。
