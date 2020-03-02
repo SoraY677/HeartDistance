@@ -2,7 +2,7 @@
  * 　参考:[https://qiita.com/hmmrjn/items/4b77a86030ed0071f548]
  */
 //GooclechromeとFirefoxに対応
-SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
 const recognition = new SpeechRecognition();
 
 //言語指定：日本語
@@ -64,3 +64,13 @@ recBt.addEventListener("click", function() {
 /**
  * 
  */
+require('dotenv').config();
+const request = require("request");
+
+console.log(process.env.CLIENT_ID);
+
+// let options = {
+// 	url: 'https://www.sejuku.net/blog/sample',
+// 	method: 'POST',
+// 	form: {"name":"太郎"}
+// }
