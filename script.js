@@ -64,13 +64,3 @@ recBt.addEventListener("click", function() {
 /**
  * 
  */
-require('dotenv').config();
-const request = require("request");
-
-console.log(process.env.CLIENT_ID);
-
-// let options = {
-// 	url: 'https://www.sejuku.net/blog/sample',
-// 	method: 'POST',
-// 	form: {"name":"太郎"}
-// }

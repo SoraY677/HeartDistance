@@ -1,1 +1,112 @@
-!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){"use strict";(function(e){var t=webkitSpeechRecognition||t,r=new t;r.lang="ja-JP",r.interimResults=!0,r.continuous=!0;var o="";r.onresult=function(e){for(var t="",n=e.resultIndex;n<e.results.length;n++){var r='<p class="talk-section">'+e.results[n][0].transcript+"</p>";e.results[n].isFinal?o+=r:t=r}document.getElementById("rec_text").innerHTML=o+t};var i=document.getElementById("rec_bt");i.addEventListener("click",(function(){i.classList.contains("active")?(i.classList.remove("active"),r.stop()):(i.classList.add("active"),r.start())})),n(3).config();n(4);console.log(e.env.CLIENT_ID)}).call(this,n(2))},function(e,t){var n,r,o=e.exports={};function i(){throw new Error("setTimeout has not been defined")}function u(){throw new Error("clearTimeout has not been defined")}function c(e){if(n===setTimeout)return setTimeout(e,0);if((n===i||!n)&&setTimeout)return n=setTimeout,setTimeout(e,0);try{return n(e,0)}catch(t){try{return n.call(null,e,0)}catch(t){return n.call(this,e,0)}}}!function(){try{n="function"==typeof setTimeout?setTimeout:i}catch(e){n=i}try{r="function"==typeof clearTimeout?clearTimeout:u}catch(e){r=u}}();var s,l=[],a=!1,f=-1;function p(){a&&s&&(a=!1,s.length?l=s.concat(l):f=-1,l.length&&d())}function d(){if(!a){var e=c(p);a=!0;for(var t=l.length;t;){for(s=l,l=[];++f<t;)s&&s[f].run();f=-1,t=l.length}s=null,a=!1,function(e){if(r===clearTimeout)return clearTimeout(e);if((r===u||!r)&&clearTimeout)return r=clearTimeout,clearTimeout(e);try{r(e)}catch(t){try{return r.call(null,e)}catch(t){return r.call(this,e)}}}(e)}}function h(e,t){this.fun=e,this.array=t}function m(){}o.nextTick=function(e){var t=new Array(arguments.length-1);if(arguments.length>1)for(var n=1;n<arguments.length;n++)t[n-1]=arguments[n];l.push(new h(e,t)),1!==l.length||a||c(d)},h.prototype.run=function(){this.fun.apply(null,this.array)},o.title="browser",o.browser=!0,o.env={},o.argv=[],o.version="",o.versions={},o.on=m,o.addListener=m,o.once=m,o.off=m,o.removeListener=m,o.removeAllListeners=m,o.emit=m,o.prependListener=m,o.prependOnceListener=m,o.listeners=function(e){return[]},o.binding=function(e){throw new Error("process.binding is not supported")},o.cwd=function(){return"/"},o.chdir=function(e){throw new Error("process.chdir is not supported")},o.umask=function(){return 0}},function(e,t){e.exports=require("dotenv")},function(e,t){e.exports=require("request")}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./script.js":
+/*!*******************!*\
+  !*** ./script.js ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n/**  音声認識部\n * 　参考:[https://qiita.com/hmmrjn/items/4b77a86030ed0071f548]\n */\n//GooclechromeとFirefoxに対応\nvar SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;\nvar recognition = new SpeechRecognition(); //言語指定：日本語\n\nrecognition.lang = \"ja-JP\"; //認識途中のデータ取得\n\nrecognition.interimResults = true; //認識し続ける\n\nrecognition.continuous = true;\nvar finalTranscript = \"\";\n\nrecognition.onresult = function (event) {\n  var interimTranscript = \"\";\n\n  for (var eventi = event.resultIndex; eventi < event.results.length; eventi++) {\n    var transcript = \"<p class=\\\"talk-section\\\">\" + event.results[eventi][0].transcript + \"</p>\";\n\n    if (event.results[eventi].isFinal) {\n      finalTranscript += transcript;\n    } else {\n      interimTranscript = transcript;\n    }\n  }\n\n  document.getElementById(\"rec_text\").innerHTML = finalTranscript + interimTranscript;\n}; //=====================================\n//以下、DOM系統\n//=====================================\n//cssの\".active\"を付与する場合\n\n\nvar activeClass = \"active\";\n/**\n * RECボタンの設定\n */\n\nvar recBt = document.getElementById(\"rec_bt\");\nrecBt.addEventListener(\"click\", function () {\n  //押されていなかった場合(デフォルト)\n  if (!recBt.classList.contains(activeClass)) {\n    //録音開始\n    recBt.classList.add(activeClass);\n    recognition.start();\n  } //押されていた場合\n  else {\n      //録音停止\n      recBt.classList.remove(activeClass);\n      recognition.stop();\n    }\n}); //=====================================\n//以下、APIへのリクエスト\n//=====================================\n\n/**\n * \n */\n\nconsole.log(\"vCAkJ2JjRGQPZfGD800OjFNYfzRJPTGX\"); // let options = {\n// \turl: 'https://www.sejuku.net/blog/sample',\n// \tmethod: 'POST',\n// \tform: {\"name\":\"太郎\"}\n// }\n\n//# sourceURL=webpack:///./script.js?");
+
+/***/ }),
+
+/***/ 0:
+/*!*************************!*\
+  !*** multi ./script.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./script.js */\"./script.js\");\n\n\n//# sourceURL=webpack:///multi_./script.js?");
+
+/***/ })
+
+/******/ });

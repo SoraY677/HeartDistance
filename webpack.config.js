@@ -1,7 +1,7 @@
 const webpack = require("webpack");
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const fs = require('fs');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
 	entry: {
@@ -16,13 +16,15 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        // options: {
-        //   presets: ['es2015']
-        // }
+        use:{
+        loader: 'babel-loader'
+        },
+        
       }
     ]
   },
-  target:"web",
-  externals: [nodeExternals()]
+  plugins: [
+    new Dotenv()
+  ],
+  target:"node"
 };
