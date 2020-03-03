@@ -18,14 +18,11 @@
 # 起動方法
 クローン後に以下を実行。
 ```
-> cd <HeartDistanceをクローンしたディレクトリのpath>
-
-> npm install 
-
-> npm run dev
+$ cd <HeartDistanceをクローンしたディレクトリのpath>
+$ npm install 
+$ npm run build
+$ npm run start
 ```
-
-実行後、【[http://localhost:8000](http://localhost:8000)】にアクセス。
 
 
 
