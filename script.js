@@ -131,12 +131,18 @@ const diagAtention = document.getElementById("diag_caution");
 diagnoseBt.addEventListener("click", function() {
 	if (clientId.value != "" && clientSecret.value != "" && recText != "") {
 		requestAPIKey();
-		diagAtention.classList.add("after-materialize")
-	}
-	else{
-		diagAtention.classList.remove("after-materialize")
+		diagAtention.classList.add("after-materialize");
+	} else {
+		diagAtention.classList.remove("after-materialize");
 	}
 });
+
+document
+	.getElementById("one_more_game_bt")
+	.addEventListener("click", function() {
+		location.reload();
+		scrollTo(0, 0);
+	});
 
 //=====================================
 //以下、COTOHA APIへのリクエスト処理
