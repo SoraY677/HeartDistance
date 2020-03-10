@@ -16,13 +16,8 @@
 ![Firefox](https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo-word-hor-sm-high-res.26b6d99c133a.png)  
 
 # 起動方法
-クローン後に以下を実行。
-```
-$ cd <HeartDistanceをクローンしたディレクトリのpath>
-$ npm install 
-$ npm run build
-$ npm run start
-```
+クローン後にディレクトリ内の"index.htmlを起動して"実行。
+
 
 # ドキュメント
 - [【画面の詳細デザイン】](https://www.draw.io/#G1Tp8_WWfVUQeT1RsJAwm6AwEBfX_6gCG1)

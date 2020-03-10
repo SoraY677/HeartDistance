@@ -30,10 +30,11 @@
           <div class="p-group">
             <p>以下の録音ボタンを押すと録音が始まります。録音し終わったら録音ボタンをもう一度押して停止することを推奨します。</p>
             <p class="strong">最初の数秒間に録音できないことがあるので少し待ってから会話を始めることをお勧めします。</p>
+            <p class="strong">また、時々録音できない時があるので、そういう場合には録音を一度止めて改めて再開してみてください。</p>
           </div>
         </div>
         <div class="rec-bt-container top-space">
-          <p>録音準備完了</p>
+          <p id="rec_state_text">default</p>
           <button id="rec_bt" class="rec-bt"><span>●</span><span>REC</span></button>
         </div>
         <div>
@@ -52,7 +53,7 @@
         </h2>
         <div class="step-inner">
           <div class="p-group">
-            <p>会話内容から心の距離を診断してみよう！</p>
+            <p>会話内容から心の距離を診断してみましょう！</p>
             <p>※ネットワークにつながっている必要があります。また、重要な会話等についてはセキュリティの観点より診断をお控えください。</p>
             <p class="strong">※診断の際にはCOTOHAAPIの登録が必要になります。まだ登録していない方は<a href="#">こちらから</a>どうぞ。</p>
           </div>
@@ -61,11 +62,11 @@
           </div>
           <!-- 診断する際の入力フォーム -->
           <div id="diagnose_container" class="diagnose-container top-space">
-            <div class="bt-group">
+            <div class="input-group">
               <input type="text" id="token_text" placeholder="Client ID">
               <input type="text" id="token_text" placeholder="Client Secret">
             </div>
-            <button class="diagnose-bt">診断する！</button>
+            <button class="strong-bt">診断する</button>
           </div>
         </div>
       </section>
@@ -89,6 +90,7 @@
             <p>どうであれ、気になるあの子との距離が縮まることを心よりお祈りしております。</p>
           </div>
         </div>
+          <button class="strong-bt">もう一度遊ぶ</button>
       </section>
     </main>
 

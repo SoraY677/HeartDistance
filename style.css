@@ -24,6 +24,23 @@ section{
   font-weight:bolder;
 }
 
+.strong-bt{
+  display: block;
+  padding:8px;
+  margin:20px auto 0 auto;
+  color:white;
+  background-color:#F84545;
+  border:2px solid #F84545;
+  border-radius: 4px;
+  font-size:20px;
+  transition-duration: .3s;
+}
+
+.strong-bt:hover{
+  color:#F84545;
+  background-color:#FFF;
+}
+
 /*
  * タイトル
  */
@@ -87,7 +104,8 @@ button.rec-bt {
   color: #2E2E2E;
   border: 1px solid #2E2E2E;
   border-radius: 50%;
-  box-shadow:0 4px 0px 0px #AAA;
+  box-shadow:0 4px 0px 0px #BBB;
+  transition-duration: 0.1s;
 }
 
 button.rec-bt:active{
@@ -147,7 +165,7 @@ button.rec-bt span:nth-child(2) {
   height:68vh;
   padding:10px;
   border:1px solid #2E2E2E;
-  background-color:#FFF;
+  background-color:#F9F9F9;
   overflow: auto;
 }
 
@@ -155,19 +173,20 @@ button.rec-bt span:nth-child(2) {
   position: relative;
   width:fit-content;
   padding:10px;
+  margin: 10px 0;
   text-align: center;
-  border: 2px solid #2E2E2E;
+  border: 1px solid #D79B00;
   border-radius: 10px;
-  background-color:#FFF;
+  background-color:#FFF2CC;
 }
 
-.talk-section:nth-child(2n){
+.talk-section.right{
   clear: both;
   float: right;
   
 }
 
-.talk-section:nth-child(2n+1){
+.talk-section.left{
   clear: both;
   float:left;
 }
@@ -181,12 +200,12 @@ button.rec-bt span:nth-child(2) {
   justify-content: space-around;
 } 
 
-.diagnose-container > .bt-group{
+.diagnose-container > .input-group{
   display: flex;
   justify-content: space-around;
 }
  
-.diagnose-container > .bt-group >  input{
+.diagnose-container > .input-group >  input{
   width:48%;
   height:2em;
   margin:.4em 0;
@@ -196,23 +215,6 @@ button.rec-bt span:nth-child(2) {
   font-size:1.2em;
   text-align: center;
 
-}
-
-.diagnose-container > .diagnose-bt{
-  display: block;
-  padding:8px;
-  margin:20px auto 0 auto;
-  color:white;
-  background-color:#F84545;
-  border:2px solid #F84545;
-  border-radius: 4px;
-  font-size:20px;
-  transition-duration: .3s;
-}
-
-.diagnose-container > .diagnose-bt:hover{
-  color:#F84545;
-  background-color:#FFF;
 }
 
 /* =======
