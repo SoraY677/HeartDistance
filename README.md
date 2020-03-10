@@ -25,6 +25,6 @@ $ npm run start
 ```
 
 # ドキュメント
-- [【画面の詳細デザイン】](https://drive.google.com/file/d/1rPrPWB3GeTKnPGQd74jHXSGRBKMzOEan/view?usp=sharing)
+- [【画面の詳細デザイン】](https://www.draw.io/#G1Tp8_WWfVUQeT1RsJAwm6AwEBfX_6gCG1)
 
 

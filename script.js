@@ -1,3 +1,5 @@
+const APIKEY = "LwQQNOSfEbDpDw2wQsPPz6EeKPLo";
+
 //録音したテキストデータ
 let recText = "";
 
@@ -164,7 +166,7 @@ const diagnodeBt = document.createElement("button");
 const diagnoseDom = document.getElementById("diagnose_container");
 diagnodeBt.id = "diagnose_bt";
 diagnodeBt.innerHTML = "会話を診断する";
-diagnoseDom.appendChild(diagnodeBt);
+// diagnoseDom.appendChild(diagnodeBt);//DELETE
 
 //ボタンにPOSTのイベントリスナーを付与
 diagnodeBt.addEventListener("click", async function() {

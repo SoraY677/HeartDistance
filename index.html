@@ -4,24 +4,108 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>心の距離計測するアプリケーション</title>
   </head>
 
   <body>
-    <div class="rec-bt-container">
-      <button id="rec_bt" class="rec-bt"><span>●</span><span>REC</span></button>
-    </div>
-    <!-- 録音した声の表示エリア -->
-    <div class="rec-text" id="rec_text"></div>
+    <main>
+      <h1 class="main-title">
+        <p>心の距離診断システム</p>
+        <p>~気になるあの子との距離を測ろう~</p>
+      </h1>
 
-    <!-- 診断する際の入力フォーム -->
-    <div id="diagnose_container">
-      <input type="text" id="token_text" value="LwQQNOSfEbDpDw2wQsPPz6EeKPLo" placeholder="API TOKENを入力">
-    </div>
+      <img class="key-visual top-space" src="./img/keyvis.png">
 
-    <div id="result_container">
+      <section>
+        <h2>
+          STEP1　会話を録音する
+        </h2>
+        <div class="step-inner">
+          <div class="p-group">
+            <p>気になるあの子との会話を録音します。</p>
+            <p class="strong">※相手に録音することを伝え、しっかりと許可を取りましょう。</p>
+          </div>
+          <div class="p-group">
+            <p>以下の録音ボタンを押すと録音が始まります。録音し終わったら録音ボタンをもう一度押して停止することを推奨します。</p>
+            <p class="strong">最初の数秒間に録音できないことがあるので少し待ってから会話を始めることをお勧めします。</p>
+          </div>
+        </div>
+        <div class="rec-bt-container top-space">
+          <p>録音準備完了</p>
+          <button id="rec_bt" class="rec-bt"><span>●</span><span>REC</span></button>
+        </div>
+        <div>
+          <!-- 録音した声の表示エリア -->
+          <div class="rec-text-container">
+            <div class="title">会話の記録一覧</div>
+            <div class="content" id="rec_text">
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section>
+        <h2>
+          STEP2　診断する
+        </h2>
+        <div class="step-inner">
+          <div class="p-group">
+            <p>会話内容から心の距離を診断してみよう！</p>
+            <p>※ネットワークにつながっている必要があります。また、重要な会話等についてはセキュリティの観点より診断をお控えください。</p>
+            <p class="strong">※診断の際にはCOTOHAAPIの登録が必要になります。まだ登録していない方は<a href="#">こちらから</a>どうぞ。</p>
+          </div>
+          <div class="p-group">
+            <p>以下にCOTOHAでのClientIDとClientSecretを入力して、診断するボタンを押してください！</p>
+          </div>
+          <!-- 診断する際の入力フォーム -->
+          <div id="diagnose_container" class="diagnose-container top-space">
+            <div class="bt-group">
+              <input type="text" id="token_text" placeholder="Client ID">
+              <input type="text" id="token_text" placeholder="Client Secret">
+            </div>
+            <button class="diagnose-bt">診断する！</button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>
+          STEP3　結果を見る
+        </h2>
+        <div class="step-inner">
+          <div class="p-group">
+            <p>結果が以下に表示されます！</p>
+            <p>気になるあの子との距離がいかほどのものなのか見てみてください！</p>
+          </div>
+        </div>
+        <div class="result-container">
+          <p>診断後、ここに結果が表示されます</p>
+        </div>
+        <div class="step-inner">
+          <div class="p-group">
+            <p>結果はいかがでしたでしょうか？</p>
+            <p>どうであれ、気になるあの子との距離が縮まることを心よりお祈りしております。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="p-group">
+        <p>システム制作：山口宙来</p>
+        <p>素材提供：<a href="#">いらすとや</a></p>
+      </div>
+      <div class="p-group">
+        <p>Qiitaで記事になっております。</p>
+        <p>ご意見等あれば、<a href="#">こちら</a>でいただけると幸いです。</p>
+      </div>
+
+      <div class="p-group">
+        <p>© 2020 Sora Yamaguchi All Rights Reserved</p>
+      </div>
+    </footer>
     </div>
     <script type="text/javascript" src="script.js"></script>
   </body>
