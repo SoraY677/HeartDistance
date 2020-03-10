@@ -24,5 +24,7 @@ $ npm run build
 $ npm run start
 ```
 
+# ドキュメント
+- [【画面の詳細デザイン】](https://drive.google.com/file/d/1rPrPWB3GeTKnPGQd74jHXSGRBKMzOEan/view?usp=sharing)
 
 

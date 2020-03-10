@@ -167,14 +167,13 @@ diagnodeBt.innerHTML = "会話を診断する";
 diagnoseDom.appendChild(diagnodeBt);
 
 //ボタンにPOSTのイベントリスナーを付与
-diagnodeBt.addEventListener("click", function() {
+diagnodeBt.addEventListener("click", async function() {
 	xhr.open("POST", "https://api.ce-cotoha.com/api/dev/nlp/v1/sentiment");
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhr.setRequestHeader("Authorization", "Bearer " + tokenText.value);
 	let requestJson = {};
 	requestJson.sentence = recText
-	console.log(requestJson);
-	xhr.send(JSON.stringify(requestJson));
+	await xhr.send(JSON.stringify(requestJson));
 });
 /*=============================ここまで*/
 
