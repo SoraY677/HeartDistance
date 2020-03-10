@@ -54,8 +54,8 @@
         <div class="step-inner">
           <div class="p-group">
             <p>会話内容から心の距離を診断してみましょう！</p>
-            <p>※ネットワークにつながっている必要があります。また、重要な会話等についてはセキュリティの観点より診断をお控えください。</p>
-            <p class="strong">※診断の際にはCOTOHAAPIの登録が必要になります。まだ登録していない方は<a href="#">こちらから</a>どうぞ。</p>
+            <p class="strong">※ネットワークにつながっている必要があります。また、重要な会話等についてはセキュリティの観点より診断をお控えください。</p>
+            <p class="strong">※診断の際には「COTOHA API」の登録が必要になります。まだ登録していない方は<a href="#">こちらから</a>どうぞ。</p>
           </div>
           <div class="p-group">
             <p>以下にCOTOHAでのClientIDとClientSecretを入力して、診断するボタンを押してください！</p>
@@ -63,10 +63,11 @@
           <!-- 診断する際の入力フォーム -->
           <div id="diagnose_container" class="diagnose-container top-space">
             <div class="input-group">
-              <input type="text" id="token_text" placeholder="Client ID">
-              <input type="text" id="token_text" placeholder="Client Secret">
+              <input type="text" id="client_id" placeholder="Client ID">
+              <input type="text" id="client_secret" placeholder="Client Secret">
             </div>
-            <button class="strong-bt">診断する</button>
+            <button id="diagnose_bt" class="strong-bt">診断する</button> 
+            <p id="diag_caution" class="after-materialize caution">「会話が存在しない・ClientID・ClientSecret」のいずれかの条件を満たしていないため診断を行えません。</p>            
           </div>
         </div>
       </section>
@@ -90,7 +91,7 @@
             <p>どうであれ、気になるあの子との距離が縮まることを心よりお祈りしております。</p>
           </div>
         </div>
-          <button class="strong-bt">もう一度遊ぶ</button>
+        <button class="strong-bt">もう一度遊ぶ</button>
       </section>
     </main>
 

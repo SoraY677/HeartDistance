@@ -24,6 +24,10 @@ section{
   font-weight:bolder;
 }
 
+p.caution {
+  color:#F84545
+}
+
 .strong-bt{
   display: block;
   padding:8px;
@@ -39,6 +43,10 @@ section{
 .strong-bt:hover{
   color:#F84545;
   background-color:#FFF;
+}
+
+.after-materialize{
+  opacity: 0;
 }
 
 /*

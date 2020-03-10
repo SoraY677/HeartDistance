@@ -1,6 +1,3 @@
-//DELETE
-const APIKEY = "LwQQNOSfEbDpDw2wQsPPz6EeKPLo";
-
 //録音したテキストデータ
 let recText = "";
 
@@ -19,6 +16,7 @@ let talkResult = ""; //既に終わった会話のまとめ
 let talkCount = 0;
 recognition.onresult = event => {
 	let currentTalk = "";
+	recText = "";
 	for (
 		let eventi = event.resultIndex;
 		eventi < event.results.length;
@@ -26,7 +24,7 @@ recognition.onresult = event => {
 	) {
 		//DOM用に会話をパース
 		let talkParse = '<p class="talk-section ';
-		talkParse += talkCount % 2 == 0 ? "left" : "right";//偶数は左寄り、奇数は右寄りにする
+		talkParse += talkCount % 2 == 0 ? "left" : "right"; //偶数は左寄り、奇数は右寄りにする
 		talkParse += '">';
 		talkParse += event.results[eventi][0].transcript + "</p>"; //DOM向けにパースしたもの
 
@@ -69,7 +67,7 @@ recBt.addEventListener("click", function() {
 		//録音停止
 		recBt.classList.remove(activeClass);
 		recognition.stop();
-		recState.innerText = "録音準備完了"
+		recState.innerText = "録音準備完了";
 	}
 });
 
@@ -120,78 +118,84 @@ function createDiagResult(category, point) {
 	const resultDom = document.getElementById("result_container");
 }
 
-//=====================================
-//以下、server.jsへのpost処理
-//=====================================
-const xhr = new XMLHttpRequest();
-const tokenText = document.getElementById("token_text");
-/*
-/============
-後でコメントアウトから開放
-/=============
-//tokenのtextボックスを見張る
-tokenText.addEventListener("change", function() {
-	const diagnoseDom = document.getElementById("diagnose_container");
-	//何も入力されていないときは
-	if (tokenText.value == "") {
-		//ボタンを消去
-		diagnoseDom.removeChild(document.getElementById("diagnose_bt"));
-	}
-	//何かしら入力されたら
-	else {
-		//ボタンを表示させる
-		const diagnodeBt = document.createElement("button");
-		diagnodeBt.id = "diagnose_bt";
-		diagnodeBt.innerHTML = "会話を診断する"
-		diagnoseDom.appendChild(diagnodeBt);
+const diagnoseBt = document.getElementById("diagnose_bt");
 
+/**
+ * clientIdとClientSecretそれぞれのテキストボックスの入力を監視し、両方が入力されていればボタンを出現させる
+ */
+const clientId = document.getElementById("client_id");
+const clientSecret = document.getElementById("client_secret");
 
-		//ボタンにPOSTのイベントリスナーを付与
-		diagnodeBt.addEventListener("click", function() {
-			xhr.open("POST", "https://api.ce-cotoha.com/api/dev/nlp/v1/sentiment/");
-			xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-			xhr.setRequestHeader(
-				"Authorization",
-				"Bearer "+tokenText.value
-			);
-			xhr.send("sentence=人生の春を謳歌しています");
-			console.log("会話結果を送信しました。");
-		});
-	}
-});
-*/
-
-/*=============================
-後で消す
-*==============================
-*/
-
-//ボタンを表示させる
-const diagnodeBt = document.createElement("button");
-const diagnoseDom = document.getElementById("diagnose_container");
-diagnodeBt.id = "diagnose_bt";
-diagnodeBt.innerHTML = "会話を診断する";
-// diagnoseDom.appendChild(diagnodeBt);//DELETE
-
+const diagAtention = document.getElementById("diag_caution");
 //ボタンにPOSTのイベントリスナーを付与
-diagnodeBt.addEventListener("click", async function() {
-	xhr.open("POST", "https://api.ce-cotoha.com/api/dev/nlp/v1/sentiment");
-	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xhr.setRequestHeader("Authorization", "Bearer " + tokenText.value);
-	let requestJson = {};
-	requestJson.sentence = recText;
-	await xhr.send(JSON.stringify(requestJson));
+diagnoseBt.addEventListener("click", function() {
+	if (clientId.value != "" && clientSecret.value != "" && recText != "") {
+		requestAPIKey();
+		diagAtention.classList.add("after-materialize")
+	}
+	else{
+		diagAtention.classList.remove("after-materialize")
+	}
 });
-/*=============================ここまで*/
 
-//レスポンスが返ってきたら
-xhr.onreadystatechange = function() {
+//=====================================
+//以下、COTOHA APIへのリクエスト処理
+//=====================================
+//APIKeyを取得するためのHTTPリクエスト
+const apikeyXhr = new XMLHttpRequest();
+
+function requestAPIKey() {
+	apikeyXhr.open("POST", "https://api.ce-cotoha.com/v1/oauth/accesstokens");
+	apikeyXhr.setRequestHeader("Content-Type", "application/json");
+	let requestJson = {};
+	requestJson.grantType = "client_credentials";
+	requestJson.clientId = clientId.value;
+	requestJson.clientSecret = clientSecret.value;
+	apikeyXhr.send(JSON.stringify(requestJson));
+}
+
+apikeyXhr.onreadystatechange = function() {
+	//レスポンス取得完了後
 	if (this.readyState == 4) {
-		const responseResult = JSON.parse(xhr.responseText || "null");
-		createDiagResult(
-			responseResult.result.sentiment,
-			responseResult.result.score
-		);
-		console.log(responseResult);
+		const responseResult = JSON.parse(apikeyXhr.responseText || false);
+		{
+			//responseが正常ならば
+			if (responseResult != false) {
+				requestAnalisys(responseResult.access_token);
+			}
+		}
 	}
 };
+
+//感情分析するためのHTTPリクエスト
+const analisysXhr = new XMLHttpRequest();
+
+function requestAnalisys(token) {
+	analisysXhr.open(
+		"POST",
+		"https://api.ce-cotoha.com/api/dev/nlp/v1/sentiment"
+	);
+	analisysXhr.setRequestHeader(
+		"Content-Type",
+		"application/json;charset=UTF-8"
+	);
+	analisysXhr.setRequestHeader("Authorization", "Bearer " + token);
+	let requestJson = {};
+	requestJson.sentence = recText;
+	analisysXhr.send(JSON.stringify(requestJson));
+}
+
+//レスポンスが返ってきたら
+analisysXhr.onreadystatechange = function() {
+	if (this.readyState == 4) {
+		const responseResult = JSON.parse(analisysXhr.responseText || false);
+		if (responseResult != false) {
+			console.log(responseResult);
+		}
+	}
+};
+
+//ボタンを表示させる
+const diagnoseDom = document.getElementById("diagnose_container");
+
+/*=============================ここまで*/
