@@ -319,8 +319,7 @@ footer p {
   .diagnose-container>.input-group>input {
     width: 100%;
   }
-  .result-container>.result>img{
-    width:30%;
-
+  .result-container>.result>img {
+    width: 30%;
   }
 }
