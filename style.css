@@ -49,6 +49,10 @@ p.caution {
   opacity: 0;
 }
 
+.exit-erase{
+  display: none;
+}
+
 /*
  * タイトル
  */
@@ -229,6 +233,7 @@ button.rec-bt span:nth-child(2) {
  * 結果表示
  */
 .result-container{
+  position: relative;
   display: flex;
   width:100%;
   height:62vh;
@@ -242,6 +247,45 @@ button.rec-bt span:nth-child(2) {
 .result-container > p{
   color:#AAA;
   font-size:18px;
+}
+
+.result-container > .result{
+  position :relative;
+  width:100%;
+  height: 100%;
+}
+
+.result-container > .result > img{
+  position: absolute;
+  transform: rotate(-29deg);
+}
+
+.comment-box{
+  display: flex;
+  width:100%;
+  height:100%;
+  padding:23% 0 ;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap;
+  background-color:#FFF2CC;
+}
+
+.comment-box > p{
+  display: block;
+  width:100%;
+  text-align: center;
+}
+.comment-box > p.category{
+  font-size:36px;
+}
+
+.comment-box > p.point{
+  font-size:24px;
+}
+
+.comment-box > p.advise{
+  font-size:14px;
 }
 
 /* ======

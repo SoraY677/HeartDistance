@@ -66,8 +66,9 @@
               <input type="text" id="client_id" placeholder="Client ID">
               <input type="text" id="client_secret" placeholder="Client Secret">
             </div>
-            <button id="diagnose_bt" class="strong-bt">診断する</button> 
-            <p id="diag_caution" class="after-materialize caution">「会話が存在しない・ClientID・ClientSecret」のいずれかの条件を満たしていないため診断を行えません。</p>            
+            <button id="diagnose_bt" class="strong-bt">診断する</button>
+            <p id="diag_caution" class="after-materialize caution">
+              「会話が存在しない・ClientID・ClientSecret」のいずれかの条件を満たしていないため診断を行えません。</p>
           </div>
         </div>
       </section>
@@ -83,7 +84,17 @@
           </div>
         </div>
         <div class="result-container">
-          <p>診断後、ここに結果が表示されます</p>
+          <p id="result_default">診断後、ここに結果が表示されます</p>
+          <div id="result_response" class="result exit-erase">
+            <img id="result_img" src="#">
+            <div class="comment-box">
+              <p id="result_category" class="category">category:default</p>
+              <p id="result_point" class="point">point:0.0点</p>
+              <p id="result_advice" class="advise">advise:default</p>
+              <p id="result_phrase" class="phrase">phrase:default</p>
+            </div>
+          </div>
+        </div>
         </div>
         <div class="step-inner">
           <div class="p-group">

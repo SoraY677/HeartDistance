@@ -16,7 +16,6 @@ let talkResult = ""; //既に終わった会話のまとめ
 let talkCount = 0;
 recognition.onresult = event => {
 	let currentTalk = "";
-	recText = "";
 	for (
 		let eventi = event.resultIndex;
 		eventi < event.results.length;
@@ -72,35 +71,35 @@ recBt.addEventListener("click", function() {
 });
 
 /**
- *
+ * 感情の分類と点数からDOMの表示を変更する
  * @param {String} category 感情の分類 positive/negatibe/neutralの三分類
  * @param {Float32Array} point 点数(小数点)
  */
-function createDiagResult(category, point) {
+function createDiagResult(category, point, phraseArray) {
 	//各点数と感情の分類に適したアドバイス
 	//感情の分類[Positive/Negative/Neutral]をキーとする
 	//点数による分類は20点ごとの5段階(各[0,20,40,60,80]以上かどうか)
-	let advise = {
+	let advice = {
 		Positive: [
-			"ダメダメ",
-			"悪くはないけども...",
-			"まぁまぁいい感じ",
-			"いいじゃん！",
-			"最高！！"
+			"会話に多少盛り上がりが見えます。ですが、まだまだ距離は遠いようです。もっと自分に素直に発言してみるといいかもしれません",
+			"会話に盛り上がりがしっかりと見れます！気になるあの子と距離は近いです。あと一歩！",
+			"会話になかなかの盛り上がりが見えます。気になるあの子との距離がかなり近いです！",
+			"かなり会話が盛り上がっており、かなり近い距離にあります！素晴らしい！",
+			"会話の盛り上がりが素晴らしいです！心の距離はもはやとなり合わせといっても過言ではないでしょう！"
 		],
 		Neutral: [
-			"もう少し踏み込んでみてもいいんじゃないかな？",
-			"えぇ",
-			"普通すぎぃ！",
-			"会話に感情を感じ取れない",
-			"つまらない会話ぁ！"
+			"会話にあまり盛り上がりが見えず、業務連絡のようになってしまっていますね...。",
+			"会話に心がないように思えます。もっと相手が楽しくなるような話題を積極的に振ってみましょう！",
+			"会話への感情移入があまりなく、とても残念です。相手に合わせて話題を振ってみましょう。",
+			"もっと自分を開放していいように感じます。趣味などの話を恐れずにだして相手の警戒心を解くことを心がけましょう。",
+			"会話の内容が普通すぎて、測定が不可能です...。"
 		],
 		Negative: [
-			"ちょっと改善したほうがいいかも...",
-			"このままだと嫌われかねない!",
-			"うーんダメです...",
-			"むしろ嫌われに行ってないか...?",
-			"これでもかってほど会話の相性が悪いよ！"
+			"ちょっと改善したほうがいいかもしれないです。会話においてマイナスとなる部分が少し見られます。",
+			"このままだと嫌われかねないです！もっと相手の事を考えて発言してみましょう。",
+			"もしかしたら相手に嫌われているかもしれません。距離を自分から少しとってみてはいかがでしょうか。",
+			"むしろ嫌われに行ってるのではと疑っているほど会話からマイナスの感情が伺えました。",
+			"率直に申し上げますと...気になるあの子はあきらめた方がいいかもしれません...。"
 		]
 	};
 
@@ -114,8 +113,42 @@ function createDiagResult(category, point) {
 		pi--;
 	}
 
-	console.log(advise[category][pi]);
-	const resultDom = document.getElementById("result_container");
+	// カテゴリー分けと点数から結果の画像と分類を決定
+	let imgNum = null;
+	let parseCategory = "";
+	switch (category) {
+		case "Positive":
+			parseCategory = "いい感じ！";
+			if (point >= 80) {
+				imgNum = 1;
+			} else if (point >= 60) {
+				imgNum = 2;
+			} else {
+				imgNum = 3;
+			}
+			break;
+		case "Neutral":
+			parseCategory = "微妙かな";
+			imgNum = 4;
+			break;
+		case "Negative":
+			parseCategory = "うーん...";
+			imgNum = 5;
+			break;
+	}
+
+	/*アドバイスをDOMに反映*/
+	//
+	document.getElementById("result_img").src = "img/grade/" + imgNum + ".png";
+	document.getElementById("result_category").innerText = parseCategory;
+	document.getElementById("result_point").innerText =
+		parseCategory + "度：" + Math.round(point * 100) + "点";
+	document.getElementById("result_advice").innerText = advice[category][pi];
+	document.getElementById("result_phrase").innerText =
+		"抽出された感情にまつわる単語:" + phraseArray.join(" , ");
+	//デフォルト文を消し、結果文を表示
+	document.getElementById("result_default").classList.add("exit-erase");
+	document.getElementById("result_response").classList.remove("exit-erase");
 }
 
 const diagnoseBt = document.getElementById("diagnose_bt");
@@ -197,11 +230,11 @@ analisysXhr.onreadystatechange = function() {
 		const responseResult = JSON.parse(analisysXhr.responseText || false);
 		if (responseResult != false) {
 			console.log(responseResult);
+			createDiagResult(
+				responseResult.result.sentiment,
+				responseResult.result.score,
+				responseResult.result.emotional_phrase
+			);
 		}
 	}
 };
-
-//ボタンを表示させる
-const diagnoseDom = document.getElementById("diagnose_container");
-
-/*=============================ここまで*/
