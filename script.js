@@ -137,6 +137,12 @@ function createDiagResult(category, point, phraseArray) {
 			break;
 	}
 
+	//感情にまつわる配列を表示用にパース
+	let parsePhraseArray = [];
+	for (let pi = 0; pi < phraseArray.length; pi++) {
+		parsePhraseArray.push(phraseArray[pi].form);
+	}
+
 	/*アドバイスをDOMに反映*/
 	//
 	document.getElementById("result_img").src = "img/grade/" + imgNum + ".png";
@@ -145,7 +151,7 @@ function createDiagResult(category, point, phraseArray) {
 		parseCategory + "度：" + Math.round(point * 100) + "点";
 	document.getElementById("result_advice").innerText = advice[category][pi];
 	document.getElementById("result_phrase").innerText =
-		"抽出された感情にまつわる単語:" + phraseArray.join(" , ");
+		"抽出された感情にまつわる単語:" + parsePhraseArray.join(" , ");
 	//デフォルト文を消し、結果文を表示
 	document.getElementById("result_default").classList.add("exit-erase");
 	document.getElementById("result_response").classList.remove("exit-erase");
