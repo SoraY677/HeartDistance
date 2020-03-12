@@ -1,4 +1,4 @@
-![](https://img.shields.io/github/repo-size/SoraY677/HeartDistance) ![](https://img.shields.io/github/package-json/v/SoraY677/HeartDistance) ![](https://img.shields.io/github/last-commit/SoraY677/HeartDistance)  
+![](https://img.shields.io/github/repo-size/SoraY677/HeartDistance) ![](https://img.shields.io/github/last-commit/SoraY677/HeartDistance)  
 ![](https://img.shields.io/github/watchers/SoraY677/HeartDistance?style=social) ![](https://img.shields.io/github/stars/SoraY677/HeartDistance?style=social)  
 ![](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FTenYDGB)
 # 概要
@@ -21,5 +21,7 @@
 
 # ドキュメント
 - [【画面の詳細デザイン】](https://www.draw.io/#G1Tp8_WWfVUQeT1RsJAwm6AwEBfX_6gCG1)
+
+# [デプロイ](https://soray677.github.io/HeartDistance/)
 
 
