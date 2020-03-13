@@ -104,7 +104,7 @@ function createDiagResult(category, point, phraseArray) {
 	};
 
 	let pi = 4; //5段階目から始まる(配列の関係により5-1である4)
-	for (let pointi = 80.0; pointi > 0.0; pointi -= 20.0) {
+	for (let pointi = 1.0; pointi > 0.0; pointi -= 0.2) {
 		//解析結果のpointが分類に当てはまれば、点数による分類添え字(pi)を決定
 		//ダメなら段階を一つ下げる
 		if (point > pointi) {
@@ -119,9 +119,9 @@ function createDiagResult(category, point, phraseArray) {
 	switch (category) {
 		case "Positive":
 			parseCategory = "いい感じ！";
-			if (point >= 80) {
+			if (point >= 0.8) {
 				imgNum = 1;
-			} else if (point >= 60) {
+			} else if (point >= 0.6) {
 				imgNum = 2;
 			} else {
 				imgNum = 3;
@@ -186,7 +186,7 @@ document
 //=====================================
 //以下、COTOHA APIへのリクエスト処理
 //=====================================
-//APIKeyを取得するためのHTTPリクエスト
+//Tokenを取得するためのHTTPリクエスト
 const apikeyXhr = new XMLHttpRequest();
 
 function requestAPIKey() {
